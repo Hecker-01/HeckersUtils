@@ -1,4 +1,4 @@
-# HeckersUtilsPlugin
+# Hecker' s Utils
 Adds 5 commands to speed things up;
   - /gmc (gamemode creative)
   - /gms (gamemode survival)
