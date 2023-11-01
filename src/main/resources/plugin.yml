@@ -1,0 +1,6 @@
+name: HeckersUtils
+version: '${project.version}'
+main: net.heckerdev.heckersutils.HeckersUtils
+api-version: '1.17'
+depend:
+  - Vault
