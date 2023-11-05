@@ -31,6 +31,8 @@ public final class HeckersUtils extends JavaPlugin {
         PaperCommandManager manager= new PaperCommandManager(this);
         manager.registerCommand(new GMCCommand());
         manager.registerCommand(new GMSCommand());
+        manager.registerCommand(new GMACommand());
+        manager.registerCommand(new GMSPCommand());
         manager.registerCommand(new HealCommand());
         manager.registerCommand(new FeedCommand());
         manager.registerCommand(new FlyCommand());
