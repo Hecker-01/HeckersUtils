@@ -16,14 +16,14 @@ public final class HeckersUtils extends JavaPlugin {
         // Plugin startup logic
         setupCommands();
         setupPermissions();
-        Bukkit.getLogger().info("HeckersUtils has been enabled!");
+        Bukkit.getLogger().info("[HeckersUtils] has been enabled!");
 
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Bukkit.getLogger().info("HeckersUtils has been disabled!");
+        Bukkit.getLogger().info("[HeckersUtils] has been disabled!");
     }
 
     private void setupCommands() {
@@ -34,6 +34,14 @@ public final class HeckersUtils extends JavaPlugin {
         manager.registerCommand(new HealCommand());
         manager.registerCommand(new FeedCommand());
         manager.registerCommand(new FlyCommand());
+        manager.registerCommand(new TPHereCommand());
+        manager.registerCommand(new AnvilCommand());
+        manager.registerCommand(new EnderChestCommand());
+        manager.registerCommand(new WorkbenchCommand());
+        manager.registerCommand(new EnchantingTableCommand());
+        manager.registerCommand(new GodCommand());
+        manager.registerCommand(new TrashCommand());
+        manager.registerCommand(new TPAllCommand());
     }
 
     private boolean setupPermissions() {
