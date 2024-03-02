@@ -22,6 +22,7 @@ public class FeedCommand extends BaseCommand {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 player.setFoodLevel(20);
+                player.setSaturation(20);
                 player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully fed!");
             } else {
                 sender.sendMessage(ChatColor.RED + "You need to specify a player to feed!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /feed " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
@@ -34,6 +35,7 @@ public class FeedCommand extends BaseCommand {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
                     player.setFoodLevel(20);
+                    player.setSaturation(20);
                     sender.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " " + args[0] + " has been successfully fed!");
                     player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully fed!");
                 } else {

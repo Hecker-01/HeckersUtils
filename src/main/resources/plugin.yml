@@ -1,5 +1,5 @@
 name: HeckersUtils
-version: '1.2'
+version: '1.2.1'
 main: net.heckerdev.heckersutils.HeckersUtils
 api-version: '1.17'
 depend:

@@ -22,7 +22,7 @@ public class GMCCommand extends BaseCommand {
         } else if (args.length == 0) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
-                player.setGameMode(GameMode.SURVIVAL);
+                player.setGameMode(GameMode.CREATIVE);
                 player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " Gamemode successfully switched to creative!");
             } else {
                 sender.sendMessage(ChatColor.RED + "You need to specify a player to switch to creative!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /gmc " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
@@ -34,7 +34,7 @@ public class GMCCommand extends BaseCommand {
             } else {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
-                    player.setGameMode(GameMode.SURVIVAL);
+                    player.setGameMode(GameMode.CREATIVE);
                     sender.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " " + args[0] + "'s gamemode successfully switched to creative!");
                     player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " Your gamemode has been switched to creative!");
                 } else {
