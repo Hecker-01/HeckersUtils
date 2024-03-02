@@ -2,11 +2,15 @@ package net.heckerdev.heckersutils.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 @CommandAlias("heal")
 @Description("Heal yourself.")
@@ -17,29 +21,29 @@ public class HealCommand extends BaseCommand {
     @CommandCompletion("@players")
     public void onDefault(@NotNull CommandSender sender, String[] args) {
         if (!sender.hasPermission("heckersutils.command.heal")) {
-            sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command!");
+            sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command!"));
         } else if (args.length == 0) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
-                double maxHealth = player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue();
+                double maxHealth = Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
                 player.setHealth(maxHealth);
-                player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully healed!");
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> You have been successfully healed!"));
             } else {
-                sender.sendMessage(ChatColor.RED + "You need to specify a player to heal!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /heal " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
-                sender.sendMessage(ChatColor.YELLOW + "You can also just use " + ChatColor.UNDERLINE + "/heal" + ChatColor.RESET + ChatColor.YELLOW + " to heal yourself, but you need to be a player to do that!" + ChatColor.RESET + ChatColor.GRAY + " Usage: " + ChatColor.UNDERLINE + "/heal");
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>You need to specify a player to heal! <gray>Usage: /heal <u><player></u>"));
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<yellow>You can also just use <u>/heal</u> to heal yourself, but you need to be a player to do that! <gray>Usage: <u>/heal</u>"));
             }
         } else {
             if (!sender.hasPermission("heckersutils.command.heal.others")) {
-                sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command like this!");
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command like this!"));
             } else {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
                     double maxHealth = player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue();
                     player.setHealth(maxHealth);
-                    sender.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " " + args[0] + " has been successfully healed!");
-                    player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully healed!");
+                    sender.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> " + args[0] + " has been successfully healed!"));
+                    player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> You have been successfully healed!"));
                 } else {
-                    sender.sendMessage(ChatColor.RED + args[0] + " is not a valid player! - Make sure the player is online!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /heal " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
+                    sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>" + args[0] + " is not a valid player! - Make sure the player is online! <gray>Usage: /heal <u><player></u>"));
                 }
             }
         }

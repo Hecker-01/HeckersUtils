@@ -2,6 +2,7 @@ package net.heckerdev.heckersutils.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -17,29 +18,29 @@ public class FeedCommand extends BaseCommand {
     @CommandCompletion("@players")
     public void onDefault(@NotNull CommandSender sender, String[] args) {
         if (!sender.hasPermission("heckersutils.command.feed")) {
-            sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command!");
+            sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command!"));
         } else if (args.length == 0) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 player.setFoodLevel(20);
                 player.setSaturation(20);
-                player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully fed!");
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b><green> You have been successfully fed!"));
             } else {
-                sender.sendMessage(ChatColor.RED + "You need to specify a player to feed!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /feed " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
-                sender.sendMessage(ChatColor.YELLOW + "You can also just use " + ChatColor.UNDERLINE + "/feed" + ChatColor.RESET + ChatColor.YELLOW + " to feed yourself, but you need to be a player to do that!" + ChatColor.RESET + ChatColor.GRAY + " Usage: " + ChatColor.UNDERLINE + "/feed");
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>You need to specify a player to feed!<gray> Usage: /feed <u><player></u>"));
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<yellow>You can also just use <u>/feed</u> to feed yourself, but you need to be a player to do that!<gray> Usage: <u>/feed</u>"));
             }
         } else {
             if (!sender.hasPermission("heckersutils.command.feed.others")) {
-                sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command like this!");
+                sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command like this!"));
             } else {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
                     player.setFoodLevel(20);
                     player.setSaturation(20);
-                    sender.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " " + args[0] + " has been successfully fed!");
-                    player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " You have been successfully fed!");
+                    sender.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b><green> " + args[0] + " has been successfully fed!"));
+                    player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b><green> You have been successfully fed!"));
                 } else {
-                    sender.sendMessage(ChatColor.RED + args[0] + " is not a valid player! - Make sure the player is online!" + ChatColor.RESET + ChatColor.GRAY + " Usage: /feed " + ChatColor.UNDERLINE + "<player>" + ChatColor.RESET);
+                    sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>" + args[0] + " is not a valid player! - Make sure the player is online!<gray> Usage: /feed <u><player></u>"));
                 }
             }
         }

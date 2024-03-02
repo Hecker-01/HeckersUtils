@@ -3,6 +3,7 @@ package net.heckerdev.heckersutils.commands;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -20,7 +21,7 @@ public class TrashCommand extends BaseCommand {
     @CommandCompletion("")
     public void onDefault(@NotNull CommandSender sender) {
         if (!sender.hasPermission("heckersutils.command.trash")) {
-            sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command!");
+            sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command!"));
         } else {
             Player player = (Player) sender;
             Inventory trash = Bukkit.createInventory(player, InventoryType.DISPENSER, Component.text(ChatColor.WHITE + "Trash bin, close to empty"));

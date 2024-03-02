@@ -2,6 +2,7 @@ package net.heckerdev.heckersutils.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -17,12 +18,12 @@ public class TPAllCommand extends BaseCommand {
     @CommandCompletion("")
     public void onDefault(@NotNull CommandSender sender) {
         if (!sender.hasPermission("heckersutils.command.tpall")) {
-            sender.sendMessage(ChatColor.RED + "⚠ You do not have permission to use this command!");
+            sender.sendMessage(MiniMessage.miniMessage().deserialize("<red>⚠ You do not have permission to use this command!"));
         } else {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.teleport((Player) sender);
             }
-            sender.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "✔" + ChatColor.RESET + ChatColor.GREEN + " Successfully teleported all players to you!");
+            sender.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> Successfully teleported all players to you!"));
         }
     }
 }
