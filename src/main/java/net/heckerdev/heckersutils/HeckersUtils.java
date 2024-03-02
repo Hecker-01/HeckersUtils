@@ -44,6 +44,7 @@ public final class HeckersUtils extends JavaPlugin {
         manager.registerCommand(new GodCommand());
         manager.registerCommand(new TrashCommand());
         manager.registerCommand(new TPAllCommand());
+        manager.registerCommand(new ShowItemCommand());
     }
 
     private boolean setupPermissions() {
