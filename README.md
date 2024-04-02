@@ -26,5 +26,5 @@ Adds a few commands to speed things up:
 
 ## Permissions
 The permissions are very simple:
-`heckersutils.<command>` for using the command on yourself. (/<command>)
-`heckersutils.<command>.others` for using the command on other players (/<command> <player>)
+`heckersutils.<command>` for using the command on yourself. (/\<command>)
+`heckersutils.<command>.others` for using the command on other players (/\<command> \<player>)
