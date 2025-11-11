@@ -16,12 +16,10 @@ Adds a few commands to speed things up:
   - /enderchest (Open an enderchest) (alias: /ec & /echest)
   - /workbench (Open a workbench) (alias: /wb, /craft & /ct)
   - /enchantingtable (Open an enchanting table) (alias: /etable & /et)
-  - /showitem (Show the item you are holdign to the server) (alias: /show)
 
 ## How to install
 1. Download Hecker's Utils [here](https://github.com/Hecker-01/HeckersUtilsPlugin/releases/tag/Latest), and add it to your `/plugins` folder.
 2. Download Vault [here](https://www.spigotmc.org/resources/vault.34315/), and add it to your `/plugins` folder.
-3. Download PlaceholderAPI [here](https://www.spigotmc.org/resources/placeholderapi.6245/), and add it to your `/plugins` folder.
 4. Start your server.
 
 ## Permissions
