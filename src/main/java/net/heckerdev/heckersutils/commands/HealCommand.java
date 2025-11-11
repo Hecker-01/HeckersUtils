@@ -25,7 +25,7 @@ public class HealCommand extends BaseCommand {
         } else if (args.length == 0) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
-                double maxHealth = Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
+                double maxHealth = player.getMaxHealth();
                 player.setHealth(maxHealth);
                 player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> You have been successfully healed!"));
             } else {
@@ -38,7 +38,7 @@ public class HealCommand extends BaseCommand {
             } else {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player != null) {
-                    double maxHealth = player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue();
+                    double maxHealth = player.getMaxHealth();
                     player.setHealth(maxHealth);
                     sender.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> " + args[0] + " has been successfully healed!"));
                     player.sendMessage(MiniMessage.miniMessage().deserialize("<green><b>✔</b> You have been successfully healed!"));

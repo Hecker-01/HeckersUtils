@@ -1,7 +1,6 @@
 name: HeckersUtils
-version: '1.3'
+version: '1.4'
 main: net.heckerdev.heckersutils.HeckersUtils
 api-version: '1.17'
 depend:
   - Vault
-  - PlaceholderAPI

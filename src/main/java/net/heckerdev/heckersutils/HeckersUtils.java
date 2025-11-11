@@ -11,19 +11,21 @@ public final class HeckersUtils extends JavaPlugin {
 
     private static Permission perms = null;
 
+    public static HeckersUtils instance;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
         setupCommands();
         setupPermissions();
-        Bukkit.getLogger().info("[HeckersUtils] has been enabled!");
+        getLogger().info("[HeckersUtils] has been enabled!");
 
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Bukkit.getLogger().info("[HeckersUtils] has been disabled!");
+        getLogger().info("[HeckersUtils] has been disabled!");
     }
 
     private void setupCommands() {
@@ -44,7 +46,6 @@ public final class HeckersUtils extends JavaPlugin {
         manager.registerCommand(new GodCommand());
         manager.registerCommand(new TrashCommand());
         manager.registerCommand(new TPAllCommand());
-        manager.registerCommand(new ShowItemCommand());
     }
 
     private boolean setupPermissions() {
@@ -63,5 +64,9 @@ public final class HeckersUtils extends JavaPlugin {
 
     public static Permission getPermissions() {
         return perms;
+    }
+
+    public static HeckersUtils getInstance() {
+        return instance;
     }
 }
